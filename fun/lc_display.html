@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <title> </title>
+    <style>
+    body {
+      margin:0px;
+      padding: 0px;
+    }
+    .n{
+      color:white;
+    }
+    .y{
+      color:red;
+    }
+    </style>
+    
+  </head>
+  <body>
+    <b>LC Display Converter</b>
+    <br />
+    <input id="inputString" value="Atmost 3 digit number" ></input>
+    <button id="display" onClick="printDigits()">Display</button>
+    <table>
+	<tr>
+	  <td>
+	    <table width="73px" border="0" style="margin-right:8px">
+	    <tr>
+	      <td></td>
+	      <td id="seg0_0" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg0_1" class="n">|</td>
+	      <td></td>
+	      <td id="seg0_2" class="n">|</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg0_3" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg0_4" class="n">|</td>
+	      <td></td>
+	      <td id="seg0_5" class="n"> |</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg0_6" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    </table>
+	  </td>
+	
+	  <td>
+	    <table width="73px" border="0" style="margin-right:8px">
+	    <tr>
+	      <td></td>
+	      <td id="seg1_0" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg1_1" class="n">|</td>
+	      <td></td>
+	      <td id="seg1_2" class="n">|</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg1_3" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg1_4" class="n">|</td>
+	      <td></td>
+	      <td id="seg1_5" class="n"> |</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg1_6" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    </table>
+	  </td>
+	
+	  <td>
+	    <table width="73px" border="0" style="margin-right:8px">
+	    <tr>
+	      <td></td>
+	      <td id="seg2_0" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg2_1" class="n">|</td>
+	      <td></td>
+	      <td id="seg2_2" class="n">|</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg2_3" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td id="seg2_4" class="n">|</td>
+	      <td></td>
+	      <td id="seg2_5" class="n"> |</td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td id="seg2_6" class="n">--</td>
+	      <td></td>
+	    </tr>
+	    </table>
+	  </td>
+	</tr>
+      </table>
+    
+    <script>
+      var pattern = ['yyynyyy','nnynnyn','ynyyyny','ynyynyy','nyyynyn','yynynyy','yynyyyy','ynynnyn','yyyyyyy','yyyynyy'];
+      function illum(num){
+	  var count = ((num.toString().length > 3) ? 2 : num.toString().length-1);
+	  //num = Number(num);
+	  var temp = num % 10;
+	  num = Math.floor(num/10);
+	  do{
+	    for(var i=0; i<pattern[temp].length;i++){
+	      document.getElementById("seg"+count+"_"+i).className = pattern[temp][i];
+	    }
+	    count--;
+	    temp = num % 10;
+	    num = Math.floor(num/10);
+	  }while(num >= 0 && count >= 0);
+	}
+	function printDigits(){
+	  var number = document.getElementById("inputString").value;
+	  illum(number);
+	}
+      </script>
+     </body>
+    </html>
